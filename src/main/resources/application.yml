@@ -1,0 +1,28 @@
+
+server:
+  port: 8080
+  servlet:
+    context-path: /
+    encoding:
+      charset: utf-8
+      enabled: true
+
+
+spring:
+#  main:
+#    web-application-type: none
+
+
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://db.rigel.kr:3306/gitauth?serverTimezone=Asia/Seoul&useSSL=false&allowPublicKeyRetrieval=true
+    username: gitauth
+    password: gitauth12#$
+
+  jpa:
+    open-in-view: true
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
