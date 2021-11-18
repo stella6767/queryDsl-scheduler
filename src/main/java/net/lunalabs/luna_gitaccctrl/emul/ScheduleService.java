@@ -22,7 +22,7 @@ public class ScheduleService {
 
 
     @Transactional //UPDATE, DELETE 경우 @Transactional을 추가해줘야 에러가 발생 X
-    @Scheduled(initialDelay = 1000, fixedDelay = 5000)
+    @Scheduled(initialDelay = 1000, fixedDelay = 5000000)
     public void natCommandAction(){
 
         //전체는 찾지말고, procYn = n인 애들만 찾아서. y로 바꿔주자..
@@ -54,12 +54,13 @@ public class ScheduleService {
             		, "-t", "nat",  "-A",  "GIT_NAT", "-p", "tcp"
             		, "-s", ipAddr, "--dport", "443", "-j", "DNAT", "--to"
             		, "172.16.81.212:443"};
+            log.info("cmd[" + cmd + "]");
             p = Runtime.getRuntime().exec(cmd);
             BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
             while ((s = br.readLine()) != null)
-                System.out.println(s);
+            	log.info(s);
             p.waitFor();
-            System.out.println("exit: " + p.exitValue());
+            log.info("exit: " + p.exitValue());
             p.destroy();
         } catch (Exception e) {
         }
