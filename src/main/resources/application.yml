@@ -1,6 +1,6 @@
 
 server:
-  port: 8085
+  port: 38180
   servlet:
     context-path: /
     encoding:
