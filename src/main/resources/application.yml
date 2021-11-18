@@ -1,6 +1,6 @@
 
 server:
-  port: 8085
+  port: 38180
   servlet:
     context-path: /
     encoding:
@@ -15,7 +15,7 @@ spring:
 
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://db.rigel.kr:3306/gitauth?serverTimezone=Asia/Seoul&useSSL=false&allowPublicKeyRetrieval=true
+    url: jdbc:mariadb://172.16.81.197:3306/gitauth?serverTimezone=Asia/Seoul&useSSL=false&allowPublicKeyRetrieval=true
     username: gitauth
     password: gitauth12#$
 

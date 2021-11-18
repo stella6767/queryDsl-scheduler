@@ -20,7 +20,7 @@ public class MainController {
 
         log.info("ip 등록되었다고 메시지 받음.. :" + msg);
 
-        scheduleService.앞으로();
+        scheduleService.natCommandAction();
 
     }
 

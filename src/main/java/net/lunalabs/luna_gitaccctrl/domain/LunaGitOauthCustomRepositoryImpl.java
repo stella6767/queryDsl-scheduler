@@ -22,6 +22,7 @@ public class LunaGitOauthCustomRepositoryImpl implements LunaGitOauthCustomRepos
         return jpaQueryFactory
                 .selectFrom(QLunaGitOauth.lunaGitOauth)
                 .where(QLunaGitOauth.lunaGitOauth.procYn.eq("N"))
+                .where(QLunaGitOauth.lunaGitOauth.useYn.eq("Y"))
                 .fetch();
     }
 
