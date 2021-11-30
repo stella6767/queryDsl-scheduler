@@ -13,16 +13,16 @@ import java.util.List;
 public class LunaGitOauthCustomRepositoryImpl implements LunaGitOauthCustomRepository{
 
     private final JPAQueryFactory jpaQueryFactory;
-
+    QLunaGitOauth lunaGitOauth = QLunaGitOauth.lunaGitOauth;//직접 만들기 싫다면 static 으로 import 하셔도 됩니다.
     @Override
     public List<LunaGitOauth> findLunaGitOauthsProcYNIsN() {
 
-        //QLunaGitOauth lunaGitOauth = new QLunaGitOauth("m"); //직접 만들기 싫다면 static 으로 import 하셔도 됩니다.
+
 
         return jpaQueryFactory
-                .selectFrom(QLunaGitOauth.lunaGitOauth)
-                .where(QLunaGitOauth.lunaGitOauth.procYn.eq(YNEnum.N.name()))
-                .where(QLunaGitOauth.lunaGitOauth.useYn.eq(YNEnum.Y.name()))
+                .selectFrom(lunaGitOauth)
+                .where(lunaGitOauth.procYn.eq(YNEnum.N.name()))
+                .where(lunaGitOauth.useYn.eq(YNEnum.Y.name()))
                 .fetch();
     }
 
@@ -30,10 +30,10 @@ public class LunaGitOauthCustomRepositoryImpl implements LunaGitOauthCustomRepos
     public Long updateLunaGitOauthsProcYNIsY(Long id) {
 
         return jpaQueryFactory
-                .update(QLunaGitOauth.lunaGitOauth)
-                .set(QLunaGitOauth.lunaGitOauth.procYn, YNEnum.Y.name())
-                .where(QLunaGitOauth.lunaGitOauth.procYn.eq(YNEnum.N.name()))
-                .where(QLunaGitOauth.lunaGitOauth.id.eq(id))
+                .update(lunaGitOauth)
+                .set(lunaGitOauth.procYn, YNEnum.Y.name())
+                .where(lunaGitOauth.procYn.eq(YNEnum.N.name()))
+                .where(lunaGitOauth.id.eq(id))
                 .execute();
     }
 }
